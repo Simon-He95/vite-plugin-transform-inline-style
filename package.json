@@ -1,0 +1,69 @@
+{
+  "name": "vite-plugin-transform-inline-style",
+  "version": "0.0.1",
+  "packageManager": "pnpm@7.6.0",
+  "description": "vite-plugin-transform-inline-style",
+  "author": "Simon He",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git + git@github.com:Simon-He95/vite-plugin-transform-inline-style.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Simon-He95/vite-plugin-transform-inline-style/issues"
+  },
+  "keywords": [
+    "vite-plugin-transform-inline-style",
+    "vue"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14.6"
+  },
+  "scripts": {
+    "build": "pkgroll --minify",
+    "dev": "pkgroll --watch",
+    "play": "pnpm run -C playground dev",
+    "play:build": "pnpm run -C playground build",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
+    "lint:fix": "pnpm run lint --fix",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest --dir test -u",
+    "ptest": "pnpm run -C playground test -u",
+    "preview": "pnpm run -C playground preview",
+    "test:e2e": "cypress open",
+    "prepublishOnly": "nr build",
+    "release": "bumpp --commit --tag --push && git push origin --tags -f && npm publish"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.9.4",
+    "vue": "^3.2.41"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.2",
+    "@types/node": "^17.0.45",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "bumpp": "^7.2.0",
+    "eslint": "^8.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "pkgroll": "^1.4.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.8",
+    "vitest": "^0.13.1"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
+  }
+}
