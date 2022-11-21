@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-transform-inline-style",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@7.6.0",
   "description": "vite-plugin-transform-inline-style",
   "author": "Simon He",
