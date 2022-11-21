@@ -12,18 +12,18 @@ export function vitePluginTransformInlineStyle() {
       const classMap: Record<string, string> = {}
       data = data.replace(getClasses, (match, p1, p2) => {
         classMap[p1.trim()] = p2
-        const reg = new RegExp(`${p1}{[ \n]{0,}${p2}}`, 'm')
+        const reg = new RegExp(`${p1}{[ \n]{0,}${p2}}[\n]{0,}`, 'm')
         return match.replace(reg, '')
       })
       let result
       for (const key in classMap) {
-        const hasStyle = new RegExp('<.*class="[ \\w]{0,}red[ \\w]{0,}"\\s{0,}style="(.*)"', 'm')
+        const hasStyle = new RegExp('<.*class="[ \\w]{0,}red[ \\w]{0,}"\\s{0,}style="(.*)"[\\s]{0,1}', 'm')
         const replaceClass = new RegExp(`(class="[ \\w]{0,}${key.slice(1)}[ \\w]{0,}")`, 'gm')
         let styles = ''
         result = data.replace(hasStyle, (match, p1) => {
           const r = p1.trim()
           styles = r.endsWith(';') ? r : `${r};`
-          return match.replace(/style=".*"/, '')
+          return match.replace(/style=".*"[\s]{0,1}/, '')
         })
         const value = classMap[key].trim()
         result = result.replace(replaceClass, match => `${match} style="${styles + value}"`)

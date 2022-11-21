@@ -17,6 +17,38 @@ export default defineConfig({
 - 目前仅支持单层的class转换，如`.a {}`, 不支持`.a .b {}`
 
 
+## 运行前
+```
+<template>
+  <div class="red" style="background: yellow" />
+</template>
+
+<style scoped>
+.red {
+  color: red;
+  font-size: 14px;
+}
+.red .a {
+  color: yellow;
+}
+</style>
+```
+
+## 运行后
+```
+<template>
+  <div class="red" style="background: yellow;color: red;
+  font-size: 14px;" />
+</template>
+
+<style scoped>
+.red .a {
+  color: yellow;
+}
+</style>
+```
+
+
 ## :coffee: 
 [请我喝一杯咖啡](https://github.com/Simon-He95/sponsor)
 
