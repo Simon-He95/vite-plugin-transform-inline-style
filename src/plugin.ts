@@ -1,10 +1,10 @@
 import fs from 'fs'
-export function vitePluginTransformInlineStyle() {
+export function vitePluginTransformInlineStyle(apply: 'build' | 'serve' = 'serve') {
   const getClasses = /<style .*>[\n]{0,}([.#][\w\-_ ]+){[\n]{0,}([ :;\w\-\n]{0,})+}[\n]{0,}/gm
   return {
     name: 'vite-plugin-transform-inline-style',
     enforce: 'pre',
-    apply: 'build',
+    apply,
     transform(code: string, id: string) {
       if (!id.endsWith('.vue'))
         return
