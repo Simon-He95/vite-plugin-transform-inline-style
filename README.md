@@ -5,9 +5,10 @@
 ```js
 import vitePluginTransformInlineStyle from 'vite-plugin-transform-inline-style'
 // vite.config.ts
+const apply: 'build' | 'serve' = 'serve' // 运行时转换还是构建时转换，默认为运行时
 export default defineConfig({
   plugins: [
-    vitePluginTransformInlineStyle()
+    vitePluginTransformInlineStyle(apply)
   ]
 })
 ```
